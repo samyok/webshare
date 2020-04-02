@@ -51,9 +51,10 @@
 </head>
 <body>
 <div id="root">
-    <div class="frozenArea text-light bg-dark">Link to view screen:&nbsp;<a href="" target="_blank" class="url"></a></div>
+    <div class="frozenArea text-light bg-dark">Link to view screen:&nbsp;<a href="" target="_blank" class="url"></a>
+    </div>
     <div class="login">
-        <button onclick="askPerms()"  class="btn btn-dark">Start Sharing</button>
+        <button onclick="askPerms()" class="btn btn-dark">Start Sharing</button>
         <br>
         <pre>Created by Samyok Nepal</pre>
     </div>
@@ -114,7 +115,7 @@
         });
 
     } else {
-        $("video").hide();
+        $("video").hide().attr('muted', true);
         peer.on('open', function (id) {
             console.log('My peer ID is: ' + id);
             $(".code").text(id);
@@ -139,14 +140,16 @@
                 conn.send('Hello!');
             });
         });
-        function updateIds(){
-            if(window.stream){
-                idsToMakeCallTo.forEach((conid)=>{
+
+        function updateIds() {
+            if (window.stream) {
+                idsToMakeCallTo.forEach((conid) => {
                     let call = peer.call(conid, window.stream);
                 })
                 idsToMakeCallTo = [];
             }
         }
+
         function askPerms() {
             const video = document.querySelector('video');
             navigator.mediaDevices.getDisplayMedia({

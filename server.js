@@ -11,7 +11,7 @@ app.get('/peerjs.min.js', function(req, res) {
     res.sendFile(path.join(__dirname + '/peerjs.min.js'));
 });
 
-const server = app.listen(9000);
+const server = app.listen(9009);
 
 const peerServer = ExpressPeerServer(server, {
     debug: true,
