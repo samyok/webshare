@@ -115,7 +115,7 @@
         });
 
     } else {
-        $("video").hide().attr('muted', true);
+        $("video").hide().prop('muted', true);
         peer.on('open', function (id) {
             console.log('My peer ID is: ' + id);
             $(".code").text(id);
